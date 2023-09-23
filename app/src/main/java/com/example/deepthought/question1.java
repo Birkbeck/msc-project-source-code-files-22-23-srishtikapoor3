@@ -2,6 +2,7 @@ package com.example.deepthought;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -159,7 +160,7 @@ public String getQuestion(int i ){
         r7 = (RadioButton) findViewById(R.id.radioButton7);
         t1= (TextView) findViewById(R.id.textView5);
 
-// Calculating scoring dependant on the users choice selected from the give multiple options available
+// Calculating scoring dependant on the users choice selected from the give multiple options available.
         if (next != null){
             next.setOnClickListener(it -> {
                     int score = 0;
@@ -204,7 +205,11 @@ public String getQuestion(int i ){
                     {
 
                         calculateScore(qnum , score);
-                        if (qnum <= 42)
+                        if (qnum ==41){
+                            next.setText("Finish"); // change the text from "next" to "finish"
+
+                        }
+                        if (qnum <= 41)
                         {
                             t1.setText(getQuestion(qnum));
                             r1.setChecked(false);
@@ -217,6 +222,9 @@ public String getQuestion(int i ){
                         }
                         else
                         {
+                            Intent intent2 = new Intent (this,suggestion1.class); //directing to suggestion1 by clicking "finish"
+                            startActivity(intent2);
+
                             t1.setText("result");
                             r1.setText("autonomy=" + autonomy);
                             r2.setText("environment=" + environment);
@@ -229,10 +237,6 @@ public String getQuestion(int i ){
                         }
 
                     }
-
-
-
-
 
 });
 
