@@ -8,14 +8,16 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class question1 extends AppCompatActivity {
-private int autonomy, environment, personal, relations, purpose, acceptance;
-private int qnum;
 
-RadioButton r1, r2, r3, r4, r5, r6, r7;
+
+public class question1 extends AppCompatActivity { // data member to store the score of each category.
+private int autonomy, environment, personal, relations, purpose, acceptance;
+private int qnum; // accessing the question with question number
+
+RadioButton r1, r2, r3, r4, r5, r6, r7; // to access the radio button with the corresponding value chosen by the user.
     TextView t1;
 
-public question1(){
+public question1(){ // constructor function to initialise the data member, 6 dimensions of Ryff's Model.
     autonomy= 0;
     environment= 0;
     personal= 0;
@@ -71,7 +73,7 @@ public void showResult (){
 }
 
 
-
+    // Assigning Scoring and questionnaire dependant on Ryff's 6 dimensional model.
 public void calculateScore (int num, int value){
     if( num ==1 || num == 13 || num == 24 || num == 35 || num == 41 || num == 10 || num == 21 )
     { autonomy += value ;}
@@ -88,6 +90,7 @@ public void calculateScore (int num, int value){
 
 
 }
+    // assigning each question as an element in a array;
 public String getQuestion(int i ){
  String question []= new String[50];
     question [0] = "1.I am not afraid to voice my opinions, even when they are in opposition to the opinions of most people.";
@@ -140,6 +143,7 @@ public String getQuestion(int i ){
 
 }
 
+// design button in the layout linked with user defined object
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,7 +159,7 @@ public String getQuestion(int i ){
         r7 = (RadioButton) findViewById(R.id.radioButton7);
         t1= (TextView) findViewById(R.id.textView5);
 
-
+// Calculating scoring dependant on the users choice selected from the give multiple options available
         if (next != null){
             next.setOnClickListener(it -> {
                     int score = 0;
@@ -188,7 +192,7 @@ public String getQuestion(int i ){
                         next.setEnabled(true);
 
                     }
-
+// reverse scoring for exceptional questions
                 qnum = qnum + 1;
                     if (qnum == 1 || qnum ==2 || qnum ==3 ||qnum ==4 ||qnum ==6 ||qnum ==7 ||qnum ==11 ||qnum ==13 ||qnum ==17 ||qnum ==20 || qnum ==21 || qnum ==22 || qnum ==23 || qnum ==27 || qnum ==29 ||qnum ==31 ||qnum ==35 ||qnum ==36 || qnum ==37 || qnum ==38 || qnum ==40)
                         score = 8-score;
