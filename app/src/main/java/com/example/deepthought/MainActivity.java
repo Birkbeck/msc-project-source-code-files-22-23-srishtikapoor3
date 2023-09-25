@@ -15,9 +15,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.deepthought.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
-private Button button;
+    // all the functional click buttons (object declarations)
+    private Button startquizbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ private Button button;
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        startquizbutton = (Button) findViewById(R.id.button);
+        startquizbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openquestion1();
@@ -47,4 +47,4 @@ private Button button;
         Intent intent = new Intent (this, question1.class);
         startActivity(intent);
     }
-    }
+}

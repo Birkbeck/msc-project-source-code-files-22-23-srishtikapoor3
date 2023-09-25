@@ -14,7 +14,8 @@ import android.widget.TextView;
 public class question1 extends AppCompatActivity { // data member to store the score of each category.
 private int autonomy, environment, personal, relations, purpose, acceptance;
 private int qnum; // accessing the question with question number
-
+private int low, high;
+private String lowCat, highCat;
 RadioButton r1, r2, r3, r4, r5, r6, r7; // to access the radio button with the corresponding value chosen by the user.
     TextView t1;
 
@@ -26,6 +27,8 @@ public question1(){ // constructor function to initialise the data member, 6 dim
     purpose= 0;
     acceptance= 0;
     qnum=0;
+    lowCat="";
+    highCat="";
 }
 
 public void showResult (){
@@ -49,8 +52,8 @@ public void showResult (){
     point [3]= relations;
     point [4]= purpose;
     point [5]= acceptance;
-    int i, low , high, lowIndex, highIndex; // finding the highest and lowest value relating to the corresponding index
-    low= point [0];
+    int i, lowIndex, highIndex; // finding the highest and lowest value relating to the corresponding index
+    low = point [0];
     lowIndex =0;
     high = point [0];
     highIndex = 0;
@@ -70,6 +73,8 @@ public void showResult (){
 
 
     }
+    low = lowIndex;
+    high= highIndex;
 
 }
 
@@ -223,6 +228,10 @@ public String getQuestion(int i ){
                         else
                         {
                             Intent intent2 = new Intent (this,suggestion1.class); //directing to suggestion1 by clicking "finish"
+                            String temp = Integer.toString(low);
+                             temp += Integer.toString(high);
+                            intent2.putExtra("high", temp);
+
                             startActivity(intent2);
 
                             t1.setText("result");
