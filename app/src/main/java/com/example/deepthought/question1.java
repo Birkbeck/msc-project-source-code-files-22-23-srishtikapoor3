@@ -227,21 +227,19 @@ public String getQuestion(int i ){
                         }
                         else
                         {
+                            t1.setVisibility(View.INVISIBLE);
+                            r1.setVisibility(View.INVISIBLE);
+                            r2.setVisibility(View.INVISIBLE);
+                            r3.setVisibility(View.INVISIBLE);
+                            r4.setVisibility(View.INVISIBLE);
+                            r5.setVisibility(View.INVISIBLE);
+                            r6.setVisibility(View.INVISIBLE);
+                            r7.setVisibility(View.INVISIBLE);
                             Intent intent2 = new Intent (this,suggestion1.class); //directing to suggestion1 by clicking "finish"
-                            String temp = Integer.toString(low);
-                             temp += Integer.toString(high);
-                            intent2.putExtra("high", temp);
-
+                            String temp = autonomy + "-"+ environment + "-"+ personal + "-"+ relations + "-"+ purpose + "-"+ acceptance;
+                            intent2.putExtra("score", temp);
                             startActivity(intent2);
-
-                            t1.setText("result");
-                            r1.setText("autonomy=" + autonomy);
-                            r2.setText("environment=" + environment);
-                            r3.setText(" personal=" +  personal );
-                            r4.setText("relations=" + relations);
-                            r5.setText("purpose=" + purpose);
-                            r6.setText("acceptance=" + acceptance);
-                            r7.setText("");
+                            t1.setText("Result");
 
                         }
 
