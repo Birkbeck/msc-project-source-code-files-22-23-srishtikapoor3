@@ -10,10 +10,17 @@ import android.widget.TextView;
 public class suggestion1 extends AppCompatActivity {
     private String score;
 
+    private String strength, weakness;
+
+    private int lowscore, highscore;
+
+
     private Button myAnalysisButton;
 
     String result = "";
-    TextView textLow, textHigh;
+    TextView finalscore;
+    TextView low, high;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +31,40 @@ public class suggestion1 extends AppCompatActivity {
         temp = intent.getStringExtra("score");
         String category[] = {"autonomy", "environment", "personal", "relations", "purpose", "acceptance"};
         String[] catscore = temp.split("-", 6);
+            strength= category[0];
+            weakness= category[0];
+            lowscore= Integer.parseInt(catscore [0]);
+            highscore= Integer.parseInt(catscore[0]);
+
         for (int i = 0; i < 6; i++) {
-            result += category[i] + " = " + catscore[i] + "\n\n\n";
+            result += category[i] + " = " + catscore[i] + "\n\n";
+            int s = Integer.parseInt(catscore[i]);
+            if ( s > highscore)
+            {
+                highscore= s;
+                strength=category[i];
+            }
+            if ( s < lowscore)
+            {
+                lowscore =s;
+                weakness=category[i];
+            }
+
+
         }
-        textLow = findViewById (R.id.textView2);
-        textLow.setText(result);
+        finalscore = findViewById (R.id.textView2);
+        finalscore.setText(result);
+
+        String highvalue = "Your strength is " + strength + " as your score is " + highscore + "\n\n";
+        String lowvalue = "Your weakness is " + weakness + " as your score is " + lowscore + "\n\n";
+
+        high = findViewById (R.id.textView8);
+        high.setText(highvalue);
+
+        low = findViewById (R.id.textView10);
+        low.setText(lowvalue);
+
+
 
 
         myAnalysisButton = (Button) findViewById(R.id.button7);

@@ -14,8 +14,7 @@ import android.widget.TextView;
 public class question1 extends AppCompatActivity { // data member to store the score of each category.
 private int autonomy, environment, personal, relations, purpose, acceptance;
 private int qnum; // accessing the question with question number
-private int low, high;
-private String lowCat, highCat;
+
 RadioButton r1, r2, r3, r4, r5, r6, r7; // to access the radio button with the corresponding value chosen by the user.
     TextView t1;
 
@@ -27,58 +26,30 @@ public question1(){ // constructor function to initialise the data member, 6 dim
     purpose= 0;
     acceptance= 0;
     qnum=0;
-    lowCat="";
-    highCat="";
 }
 
-public void showResult (){
-    String opinion [][]= new String[6][2]; // assigning the opinion of low score and high score of each category with matrix
-    opinion[0][0] ="low autonomy";
+public void showResult () {
+    String opinion[][] = new String[6][2]; // assigning the opinion of low score and high score of each category with matrix
+    opinion[0][0] = "low autonomy";
     opinion[0][1] = "high autonomy";
-    opinion[1][0] ="low environment";
+    opinion[1][0] = "low environment";
     opinion[1][1] = "high environment";
-    opinion[2][0] ="low personal";
+    opinion[2][0] = "low personal";
     opinion[2][1] = "high personal";
-    opinion[3][0] ="low relations";
+    opinion[3][0] = "low relations";
     opinion[3][1] = "high relations";
-    opinion[4][0] ="low purpose";
+    opinion[4][0] = "low purpose";
     opinion[4][1] = "high purpose";
-    opinion[5][0] ="low acceptance";
+    opinion[5][0] = "low acceptance";
     opinion[5][1] = "high acceptance";
-    int point [] = new int[6]; // assigning the calculated score of each category
-    point [0]= autonomy;
-    point [1]= environment;
-    point [2]= personal;
-    point [3]= relations;
-    point [4]= purpose;
-    point [5]= acceptance;
-    int i, lowIndex, highIndex; // finding the highest and lowest value relating to the corresponding index
-    low = point [0];
-    lowIndex =0;
-    high = point [0];
-    highIndex = 0;
-    for(i = 1; i<6 ; i++) // finding the highest and lowest values from all categories with index
-    {
-        if (point [i]< low )
-        {
-            low = point[i];
-            lowIndex= i;
-        }
-        else if (point[i]> high)
-        {
-            high = point [i];
-            highIndex = i;
-        }
-
-
-
-    }
-    low = lowIndex;
-    high= highIndex;
-
+    int point[] = new int[6]; // assigning the calculated score of each category
+    point[0] = autonomy;
+    point[1] = environment;
+    point[2] = personal;
+    point[3] = relations;
+    point[4] = purpose;
+    point[5] = acceptance;
 }
-
-
     // Assigning Scoring and questionnaire dependant on Ryff's 6 dimensional model.
 public void calculateScore (int num, int value){
     if( num ==1 || num == 13 || num == 24 || num == 35 || num == 41 || num == 10 || num == 21 )
@@ -220,7 +191,7 @@ public String getQuestion(int i ){
                             r1.setChecked(false);
                             r2.setChecked(false);
                             r3.setChecked(false);
-                            r4.setChecked(false);
+                            r4.setChecked(true);
                             r5.setChecked(false);
                             r6.setChecked(false);
                             r7.setChecked(false);

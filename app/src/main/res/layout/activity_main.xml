@@ -109,13 +109,14 @@
         android:layout_marginEnd="146dp"
         android:layout_marginBottom="93dp"
         android:text="Start Quiz"
+        android:enabled="false"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button5"
@@ -135,6 +136,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:enabled="false"
         android:layout_marginStart="103dp"
         android:layout_marginEnd="105dp"
         android:layout_marginBottom="43dp"
@@ -167,7 +169,7 @@
         android:text="Login" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress5"
+        android:id="@+id/editTextEmail"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"

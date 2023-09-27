@@ -18,8 +18,8 @@ public class Login extends SQLiteOpenHelper
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            String query  = "CREATE TABLE user (username text PRIMARY KEY, password text,";
-            query += " lowCat text, lowScore int, highCat text, highScore int )";
+            String query  = "CREATE TABLE user (emailid text PRIMARY KEY, username text, password text,";
+            query += " strenght text, weakness text)";
             db.execSQL(query);
             query = "insert into user values('skapoo2@gmail.com','srishti')";
             db.execSQL(query);
