@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.content.SharedPreferences;
+
 import android.widget.TextView;
 
 
@@ -24,10 +26,15 @@ public class thought extends AppCompatActivity {
             public void onClick(View v) {
                 openmyAnalysisButton2();
             }
+
+
         });
     }
     public void openmyAnalysisButton2() {
         Intent intent6 = new Intent(this, analysis.class);
         startActivity(intent6);
     }
-    }
+
+
+
+}

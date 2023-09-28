@@ -54,10 +54,12 @@ import android.widget.Toast;
                 String email = insertEmail.getText().toString();
                 String password = insertPassword.getText().toString();
                 String confirm = insertConfirmPassword.getText().toString();
-                if (password.equals(confirm)) {
+                if (password.equals(confirm) && name.length()>=2   && email.length()>=2  && password.length()>=2)
+                {
 
-                    String strength = "autonomy";
-                    String weakness = "environment";
+
+                    String strength = "empty";
+                    String weakness = "empty";
                     // inserting and checking if the input by user is successfull or failed
                     if (signupData.insertUser(email, name, password, strength, weakness)) {
                         Toast.makeText(signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
@@ -68,7 +70,7 @@ import android.widget.Toast;
                     }
                 }
                 // if the passwords and confirm passwords do not match then show error and clear the edit text
-
+                else
                 {
                     Toast.makeText(signup.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     insertPassword.setText("");

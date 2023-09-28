@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.deepthought.databinding.ActivityMainBinding;
+import android.content.SharedPreferences;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -124,4 +125,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent5 = new Intent(this, thought.class);
         startActivity(intent5);
     }
+
+
 }

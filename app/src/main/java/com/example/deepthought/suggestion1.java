@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.SharedPreferences;
 
 public class suggestion1 extends AppCompatActivity {
     private String score;
@@ -63,8 +64,6 @@ public class suggestion1 extends AppCompatActivity {
 
         low = findViewById (R.id.textView10);
         low.setText(lowvalue);
-
-
 
 
         myAnalysisButton = (Button) findViewById(R.id.button7);
