@@ -19,6 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
+    String Email, Password;
 
     private ActivityMainBinding binding;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Create an instance of SignupData
     SignupData signupData;
+    analysisData analysisdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         // creating object of SignupData class
         signupData = new SignupData(this);
-
+        analysisdata = new analysisData(this);
 
         // establishing the link between existing edit text object and local object
         emailEditText = findViewById(R.id.editTextEmail);
@@ -82,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String emailid = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-
+                Email = emailid;
+                Password =password;
+                // checking user credentials
                 if (signupData.checkUserCredentials(emailid, password))
                 {
                     // login successful and unsuccessful if the credentials match the database
@@ -118,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void openquestion1() {
         Intent intent = new Intent(this, question1.class);
+        String temp = Email +"-"+Password;
+        intent.putExtra("user2", temp);
         startActivity(intent);
     }
 

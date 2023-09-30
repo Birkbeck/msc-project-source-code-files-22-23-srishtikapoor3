@@ -8,12 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class question1 extends AppCompatActivity { // data member to store the score of each category.
 private int autonomy, environment, personal, relations, purpose, acceptance;
 private int qnum; // accessing the question with question number
+    String Email, Password;
+
+
 
 RadioButton r1, r2, r3, r4, r5, r6, r7; // to access the radio button with the corresponding value chosen by the user.
     TextView t1;
@@ -125,6 +128,16 @@ public String getQuestion(int i ){
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question01);
+        Intent intent = getIntent();
+        String temp;
+        temp = intent.getStringExtra("user2");
+        String[] details = temp.split("-", 2);
+        Email = details[0];
+        Password = details[1];
+
+ //System.out.println("email is "+ Email+ " Password is " + Password);
+        Toast.makeText(question1.this, "Email"+ Email, Toast.LENGTH_SHORT).show();
+
         Button next =  (Button) findViewById(R.id.button2);
 
         r1 = (RadioButton) findViewById(R.id.radioButton1);
@@ -169,7 +182,7 @@ public String getQuestion(int i ){
                         next.setEnabled(true);
 
                     }
-// reverse scoring for exceptional questions
+                // reverse scoring for exceptional questions
                 qnum = qnum + 1;
                     if (qnum == 1 || qnum ==2 || qnum ==3 ||qnum ==4 ||qnum ==6 ||qnum ==7 ||qnum ==11 ||qnum ==13 ||qnum ==17 ||qnum ==20 || qnum ==21 || qnum ==22 || qnum ==23 || qnum ==27 || qnum ==29 ||qnum ==31 ||qnum ==35 ||qnum ==36 || qnum ==37 || qnum ==38 || qnum ==40)
                         score = 8-score;
@@ -206,9 +219,10 @@ public String getQuestion(int i ){
                             r5.setVisibility(View.INVISIBLE);
                             r6.setVisibility(View.INVISIBLE);
                             r7.setVisibility(View.INVISIBLE);
-                            Intent intent2 = new Intent (this,suggestion1.class); //directing to suggestion1 by clicking "finish"
-                            String temp = autonomy + "-"+ environment + "-"+ personal + "-"+ relations + "-"+ purpose + "-"+ acceptance;
-                            intent2.putExtra("score", temp);
+                            //directing to suggestion1 by clicking "finish"
+                            Intent intent2 = new Intent (this,suggestion1.class);
+                            String temp2 = autonomy + "-"+ environment + "-"+ personal + "-"+ relations + "-"+ purpose + "-"+ acceptance +"-"+ Email + "-" + Password;
+                            intent2.putExtra("score", temp2);
                             startActivity(intent2);
                             t1.setText("Result");
 
