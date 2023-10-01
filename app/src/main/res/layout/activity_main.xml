@@ -107,9 +107,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="143dp"
-        android:layout_marginEnd="146dp"
-        android:layout_marginBottom="93dp"
+        android:layout_marginStart="209dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="95dp"
         android:enabled="false"
         android:text="Start Quiz"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
@@ -142,7 +142,7 @@
         android:layout_marginEnd="105dp"
         android:layout_marginBottom="43dp"
         android:enabled="true"
-        android:text="Thought of the day" />
+        android:text="Inspiring Thought " />
 
     <Button
         android:id="@+id/button4"
@@ -156,6 +156,19 @@
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="146dp"
         android:text="Sign Up" />
+
+    <Button
+        android:id="@+id/button33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginBottom="94dp"
+        android:text="About" />
 
     <Button
         android:id="@+id/button5"

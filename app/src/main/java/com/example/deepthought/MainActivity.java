@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton;
     private Button signUpbutton;
 
+    private Button aboutButton;
+
     private EditText emailEditText;  // for the email input
     private EditText passwordEditText; // for the password input
 
@@ -73,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openthought();
+            }
+        });
+
+        // For aboutButton
+        aboutButton = (Button) findViewById(R.id.button33);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAbout();
             }
         });
 
@@ -131,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent5 = new Intent(this, thought.class);
         startActivity(intent5);
     }
+    public void openAbout() {
+        Intent intent7 = new Intent(this, About.class);
+        startActivity(intent7);
+    }
+
 
 
 }
