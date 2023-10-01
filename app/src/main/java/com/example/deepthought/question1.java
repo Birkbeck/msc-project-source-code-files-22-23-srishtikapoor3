@@ -11,17 +11,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class question1 extends AppCompatActivity { // data member to store the score of each category.
-private int autonomy, environment, personal, relations, purpose, acceptance;
-private int qnum; // accessing the question with question number
-    String Email, Password;
+public class question1 extends AppCompatActivity {
 
+    // data member to store the score of each category.
+    private int autonomy, environment, personal, relations, purpose, acceptance;
+    private int qnum; // accessing the question with question number
+    String Email, Password; // Storing and carrying forward user details.
 
-
-RadioButton r1, r2, r3, r4, r5, r6, r7; // to access the radio button with the corresponding value chosen by the user.
+    RadioButton r1, r2, r3, r4, r5, r6, r7; // to access the radio button with the corresponding value chosen by the user.
     TextView t1;
 
-public question1(){ // constructor function to initialise the data member, 6 dimensions of Ryff's Model.
+    // constructor function to initialise the data member, 6 dimensions of Ryff's Model.
+    public question1(){
     autonomy= 0;
     environment= 0;
     personal= 0;
@@ -31,8 +32,8 @@ public question1(){ // constructor function to initialise the data member, 6 dim
     qnum=0;
 }
 
-public void showResult () {
-    String opinion[][] = new String[6][2]; // assigning the opinion of low score and high score of each category with matrix
+/*public void showResult () {
+    /*String opinion[][] = new String[6][2]; // assigning the opinion of low score and high score of each category with matrix
     opinion[0][0] = "low autonomy";
     opinion[0][1] = "high autonomy";
     opinion[1][0] = "low environment";
@@ -52,9 +53,9 @@ public void showResult () {
     point[3] = relations;
     point[4] = purpose;
     point[5] = acceptance;
-}
+}*/
     // Assigning Scoring and questionnaire dependant on Ryff's 6 dimensional model.
-public void calculateScore (int num, int value){
+    public void calculateScore (int num, int value){
     if( num ==1 || num == 13 || num == 24 || num == 35 || num == 41 || num == 10 || num == 21 )
     { autonomy += value ;}
     else if( num ==3 || num == 15 || num == 26 || num == 36 || num == 42 || num == 12 || num == 23 )
@@ -71,8 +72,8 @@ public void calculateScore (int num, int value){
 
 }
     // assigning each question as an element in a array;
-public String getQuestion(int i ){
- String question []= new String[50];
+    public String getQuestion(int i ){
+    String question []= new String[50];
     question [0] = "1.I am not afraid to voice my opinions, even when they are in opposition to the opinions of most people.";
     question [1] = "2.For me, life has been a continuous process of learning, changing, and growth.";
     question [2]="3.In general, I feel I am in charge of the situation in which I live.";
@@ -116,30 +117,35 @@ public String getQuestion(int i ){
     question [40]="41. It’s difficult for me to voice my own opinions on controversial matters.";
     question [41]="42. I often feel overwhelmed by my responsibilities.";
 
+    // Check if all the questions are attempted.
+
     if (i < 42)
         return question [i];
     else
         return "";
 
-}
+    }
 
-// design button in the layout linked with user defined object
+// Design button in the layout linked with user defined object
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question01);
         Intent intent = getIntent();
         String temp;
+        //Extracting the carried data from parent activity.
         temp = intent.getStringExtra("user2");
         String[] details = temp.split("-", 2);
         Email = details[0];
         Password = details[1];
 
- //System.out.println("email is "+ Email+ " Password is " + Password);
+        //Toast pop up to ensure the user email is carried forward.
         Toast.makeText(question1.this, "Email"+ Email, Toast.LENGTH_SHORT).show();
+
 
         Button next =  (Button) findViewById(R.id.button2);
 
+        // Local radio button object linked with designed radio button.
         r1 = (RadioButton) findViewById(R.id.radioButton1);
         r2 = (RadioButton) findViewById(R.id.radioButton2);
         r3 = (RadioButton) findViewById(R.id.radioButton3);
@@ -149,7 +155,7 @@ public String getQuestion(int i ){
         r7 = (RadioButton) findViewById(R.id.radioButton7);
         t1= (TextView) findViewById(R.id.textView5);
 
-// Calculating scoring dependant on the users choice selected from the give multiple options available.
+    // Calculating scoring dependant on the users choice selected from the give multiple options available.
         if (next != null){
             next.setOnClickListener(it -> {
                     int score = 0;
@@ -192,23 +198,26 @@ public String getQuestion(int i ){
                     }
                     else
                     {
-
+                        //Calling the score calculated in respect to category.
                         calculateScore(qnum , score);
                         if (qnum ==41){
-                            next.setText("Finish"); // change the text from "next" to "finish"
+                            // change the text from "next" to "finish"
+                            next.setText("Finish");
 
                         }
+                        //if question is less than 41 then clear the radio button.
                         if (qnum <= 41)
                         {
                             t1.setText(getQuestion(qnum));
                             r1.setChecked(false);
                             r2.setChecked(false);
                             r3.setChecked(false);
-                            r4.setChecked(true);
+                            r4.setChecked(false);
                             r5.setChecked(false);
                             r6.setChecked(false);
                             r7.setChecked(false);
                         }
+                        // After all questions are completed then hide the  components of the page.
                         else
                         {
                             t1.setVisibility(View.INVISIBLE);
@@ -219,6 +228,8 @@ public String getQuestion(int i ){
                             r5.setVisibility(View.INVISIBLE);
                             r6.setVisibility(View.INVISIBLE);
                             r7.setVisibility(View.INVISIBLE);
+
+
                             //directing to suggestion1 by clicking "finish"
                             Intent intent2 = new Intent (this,suggestion1.class);
                             String temp2 = autonomy + "-"+ environment + "-"+ personal + "-"+ relations + "-"+ purpose + "-"+ acceptance +"-"+ Email + "-" + Password;

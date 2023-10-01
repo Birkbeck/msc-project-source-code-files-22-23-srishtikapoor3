@@ -12,12 +12,14 @@ import android.widget.Toast;
 
     public class signup extends AppCompatActivity {
 
-    private Button createAccountbutton;
+        // Object declaration for button and edit text.
+        private Button createAccountbutton;
 
     private Button goSigninbutton;
 
     private EditText insertName, insertEmail, insertPassword, insertConfirmPassword;
 
+    //Defining the object of  signupData class
     SignupData signupData = new SignupData(this);
 
 
@@ -27,7 +29,7 @@ import android.widget.Toast;
         setContentView(R.layout.activity_signup);
 
 
-        // For goSigninbutton
+        // Defining action for goSigninbutton
         goSigninbutton = (Button) findViewById(R.id.button9);
         goSigninbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,18 +56,24 @@ import android.widget.Toast;
                 String email = insertEmail.getText().toString();
                 String password = insertPassword.getText().toString();
                 String confirm = insertConfirmPassword.getText().toString();
+                // Credentials are accepted if the types password match and minimum character is set to at least  2.
                 if (password.equals(confirm) && name.length()>=2   && email.length()>=2  && password.length()>=2)
                 {
-
-
                     String strength = "empty";
                     String weakness = "empty";
-                    // inserting and checking if the input by user is successfull or failed
-                    if (signupData.insertUser(email, name, password, strength, weakness)) {
+
+                    // inserting and checking if the input by user is successful  or failed.
+                    if (signupData.insertUser(email, name, password, strength, weakness))
+                    // Display successful attempt in pop up message.
+                    {
                         Toast.makeText(signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
                         // Navigate back to main activity or login activity
                         finish();
-                    } else {
+                    }
+                    // Display fail attempt in pop up message.
+
+                    else
+                    {
                         Toast.makeText(signup.this, "Signup failed", Toast.LENGTH_SHORT).show();
                     }
                 }

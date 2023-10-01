@@ -9,6 +9,8 @@ import android.widget.Button;
 
 public class About extends AppCompatActivity {
 
+    //object declaration for home button.
+
     Button homebutton;
 
     @Override
@@ -16,10 +18,7 @@ public class About extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-
-
-
-        // For startquizbutton
+        // Event procedure of  homebutton
         homebutton = (Button) findViewById(R.id.button77);
         homebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +28,7 @@ public class About extends AppCompatActivity {
         });
     }
 
+    // Directing towards starting the "Home" page which is the MainActivity.
 
     public void openhome ()
     {

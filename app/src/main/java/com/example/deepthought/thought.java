@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class thought extends AppCompatActivity {
 
+    //object declare for button and TextView
+
     Button Homebutton;
     TextView quote;
 
@@ -20,11 +22,11 @@ public class thought extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thought);
 
-        Homebutton = (Button) findViewById(R.id.button6);
+        // Defining the event click action procedure for "Home" button.
 
+        Homebutton = (Button) findViewById(R.id.button6);
         Homebutton.setOnClickListener(new View.OnClickListener()
         {
-            // defining the event click action procedure
             @Override
             public void onClick(View v)
             {
@@ -36,6 +38,8 @@ public class thought extends AppCompatActivity {
         display();
 
     }
+
+    //Directing towards home page.
     public void openhome ()
     {
         Intent intent4 = new Intent(this, MainActivity.class);
@@ -44,10 +48,15 @@ public class thought extends AppCompatActivity {
     }
 
 
+
+    // Assigning 30 different quotes in a list of array. This function displays a random text.
     public void display()
         {
             Random random1 = new Random();
+
+            //generating random number between 0 to 29.
             int guess = random1.nextInt(30);
+            //msg = message to be displayed.
 
             String msg[]= new String [30];
             msg[0]="A disciplined mind brings happiness.-Gautama Buddha";
@@ -81,7 +90,9 @@ public class thought extends AppCompatActivity {
             msg[29]=" Those who know, do. Those who understand, teach- Aristotle";
             msg[29]="Act in such a way that you treat humanity, whether in your own person or in the person of any other, never merely as a means to an end, but always at the same time as an end-Immanuel Kant";
 
+            // Displaying the message.
             quote = findViewById(R.id.textview14);
+            // Extracting the random text/message to be displayed.
             String s = msg [guess];
             quote.setText(s);
         }

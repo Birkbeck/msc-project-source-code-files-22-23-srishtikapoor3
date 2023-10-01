@@ -10,13 +10,22 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 public class suggestion1 extends AppCompatActivity {
+
+
+    //Data member declaration
     private String score;
 
     private String strength, weakness;
 
     private int lowscore, highscore;
 
-    analysisData obj;
+    //Object declaration
+
+    //analysisData obj;
+    SignupData signupData = new SignupData(this);
+
+
+    //Textview and Button declaration
     private Button myAnalysisButton;
 
     String result = "";
@@ -32,7 +41,7 @@ public class suggestion1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestion1);
-        obj = new analysisData(this);
+        //obj = new analysisData(this);
 
         Intent intent = getIntent();
         String temp;
@@ -65,7 +74,7 @@ public class suggestion1 extends AppCompatActivity {
         }
         finalscore = findViewById (R.id.textView2);
         finalscore.setText(result);
-// display high and low values
+        // display high and low values
         String highvalue = "Your strength is " + strength + " as your score is " + highscore + "\n\n";
         String lowvalue = "Your weakness is " + weakness + " as your score is " + lowscore + "\n\n";
         //obj.updateUser(emailid, weakness);
@@ -117,6 +126,8 @@ if (weakness.equalsIgnoreCase(catty [i]))
     }
         public void openhome ()
         {
+             signupData.updateUser(Email, strength, weakness);
+
             Intent intent4 = new Intent(this, MainActivity.class);
             startActivity(intent4);
 
