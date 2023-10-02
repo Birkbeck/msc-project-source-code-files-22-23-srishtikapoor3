@@ -98,6 +98,4 @@ public class thought extends AppCompatActivity {
         }
 
 
-
-
 }

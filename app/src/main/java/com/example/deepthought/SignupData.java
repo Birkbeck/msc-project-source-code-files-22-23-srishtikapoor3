@@ -24,10 +24,11 @@ public class SignupData extends SQLiteOpenHelper {
     // table contains emailId, username, password, test result strength, test result weakness
    @Override
     public void onCreate(SQLiteDatabase db) {
-        /* String query  = "CREATE TABLE user (emailid text PRIMARY KEY, username text, password text,";
+        String query  = "CREATE TABLE IF NOT EXISTS user (emailid text PRIMARY KEY, username text, password text,";
+
         query += " strength text, weakness text)";
         db.execSQL(query);
-
+/*
         query = "Create table suggestion(emailid text, weakness text , opinion text)";
         db.execSQL(query);
         String cat = "autonomy";
@@ -70,7 +71,7 @@ public class SignupData extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS user");
+      //  db.execSQL("DROP TABLE IF EXISTS user");
         onCreate(db);
     }
 

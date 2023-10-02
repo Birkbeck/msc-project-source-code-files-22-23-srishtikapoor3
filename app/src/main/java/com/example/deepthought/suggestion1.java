@@ -124,13 +124,20 @@ if (weakness.equalsIgnoreCase(catty [i]))
 
         });
     }
-        public void openhome ()
-        {
-             signupData.updateUser(Email, strength, weakness);
+        public void openhome () {
 
-            Intent intent4 = new Intent(this, MainActivity.class);
-            startActivity(intent4);
+            try {
+                signupData.updateUser(Email, strength, weakness);
 
+                Intent intent4 = new Intent(this, MainActivity.class);
+                startActivity(intent4);
+
+
+            }
+            catch (Exception e1) {
+
+                Toast.makeText(this, "error is" + e1, Toast.LENGTH_SHORT).show();
+            }
         }
 
 
